@@ -119,6 +119,22 @@ Vercel Configuration files `vercel.json` and `wsgi.py` are pre-configured.
 
 ---
 
+## 🔄 CI/CD Pipeline
+
+This project uses a modern CI/CD workflow:
+
+1.  **Continuous Integration (GitHub Actions)**:
+    *   On every push to `main`, a GitHub Action workflow triggers.
+    *   It installs dependencies and runs the Django **Test Suite** to ensure no code breaks.
+    *   Find the workflow configuration in `.github/workflows/ci.yml`.
+
+2.  **Continuous Deployment (Vercel)**:
+    *   Once the changes are pushed to GitHub (and tests pass), **Vercel** automatically detects the commit.
+    *   It builds the Python application and deploys it to the edge.
+    *   Live URL is updated instantly.
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! Please fork the repository and submit a Pull Request.
