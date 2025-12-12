@@ -26,7 +26,7 @@ SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-pk*20j)iz5hxk$q-5*=-s#kq&v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', '*').split(',') if host.strip()]
+ALLOWED_HOSTS = [host.strip() for host in os.getenv('ALLOWED_HOSTS', '*').split(',') if host.strip()] + ['.vercel.app']
 
 
 # Application definition
