@@ -10,7 +10,7 @@ An intelligent recruitment platform that leverages Google's Gemini AI to automat
 *   **🎯 Context-Aware Ranking**: ranks candidates specifically against the **Job Description** they applied for, providing a relevance score (0-100%).
 *   **💼 Job Board & Career Page**: A public-facing career page where candidates can browse open positions and apply directly.
 *   **🧠 Skill Extraction**: Identifies technical and soft skills and saves them to the database.
-*   **🔍 Vector Search**: Uses **ChromaDB** for semantic search capabilities, allowing purely conceptual matching between candidates and jobs.
+*   **⚡ Lightweight Vector Search**: Uses **Gemini Embeddings** + JSON storage for semantic search, optimized for serverless deployment (removing heavy request for ChromaDB).
 *   **📊 Recruiter Dashboard**: A centralized view to manage applicants, view AI evaluations, and sort candidates by best fit.
 
 ---
@@ -19,11 +19,19 @@ An intelligent recruitment platform that leverages Google's Gemini AI to automat
 
 *   **Backend**: Django 5.0 (Python)
 *   **AI Model**: Google Gemini 2.5 Flash / Flash Lite (via `google-generativeai`)
-*   **Vector Database**: ChromaDB (for embeddings and semantic search)
-*   **Database**: SQLite (Development) / PostgreSQL (Production ready)
+*   **Vector Database**: Custom Lightweight JSON Store (optimized for Vercel)
+*   **Database**: SQLite (Development/Demo)
 *   **Frontend**: HTML5, CSS3, Django Templates
-*   **PDF Processing**: `pypdf`
-*   **Word Processing**: `docx2txt`
+*   **Deployment**: Vercel (Serverless)
+
+---
+
+## 🚀 Live Demo (Vercel)
+
+This project is deployed on Vercel!
+**Note**: Since Vercel is serverless and read-only:
+1.  **Database Reset**: The SQLite database resets to its initial state every time the app redeploys or sleeps. New data persists only for the active session.
+2.  **File Uploads**: Resumes are processed in `/tmp` (ephemeral storage) and are not permanently stored on the server.
 
 ---
 
@@ -35,7 +43,7 @@ An intelligent recruitment platform that leverages Google's Gemini AI to automat
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Fainaz96/Project-Applicant-Tracking-System-ATS.git
+git clone https://github.com/StartAgain00/Project-Applicant-Tracking-System-ATS.git
 cd Project-Applicant-Tracking-System-ATS
 ```
 
@@ -77,20 +85,17 @@ Visit `http://127.0.0.1:8000/` to see the application.
 
 ---
 
-## 📖 Usage Guide
+## ☁️ Deployment Guide (Vercel)
 
-### For Candidates
-1.  Navigate to the **Home Page**.
-2.  Select an open position (e.g., "AI Engineer").
-3.  Click **Apply Now**.
-4.  Upload your resume (PDF/DOCX).
-5.  Receive confirmation of application.
+This project is configured for easy deployment on **Vercel**.
 
-### For Recruiters
-1.  Go to `http://127.0.0.1:8000/dashboard/`.
-2.  View the list of all applicants.
-3.  See the **AI Score** (Total, Skills, Experience) for each candidate.
-4.  Click on a candidate's name to view the detailed evaluation and AI reasoning.
+1.  **Fork** this repository.
+2.  Login to [Vercel](https://vercel.com/) and click **"Add New Project"**.
+3.  Import your forked repository.
+4.  **Environment Variables**: Add the keys from your `.env` file (`GOOGLE_API_KEY`, `SECRET_KEY`, `DEBUG=False`) to the Vercel project settings.
+5.  **Deploy**!
+
+Vercel Configuration files `vercel.json` and `wsgi.py` are pre-configured.
 
 ---
 
@@ -100,16 +105,16 @@ Visit `http://127.0.0.1:8000/` to see the application.
 .
 ├── ats/                    # Main Application App
 │   ├── agents.py           # AI Agents (Parser, Ranker, Extractor)
-│   ├── models.py           # Database Models (Job, Applicant, Skill)
-│   ├── views.py            # Business Logic & Views
-│   ├── vector_db.py        # ChromaDB Integration
+│   ├── models.py           # Database Models
+│   ├── views.py            # Business Logic
+│   ├── vector_db.py        # Lightweight Vector DB (JSON + Gemini)
 │   └── templates/ats/      # HTML Templates
-├── config/                 # Django Project Configuration
-├── media/resumes/          # Uploaded Resume Files
-├── chroma_db/              # Vector Database Storage
+├── config/                 # Django Project Config
+├── media/                  # Resume Storage
+├── vercel.json             # Vercel Deployment Config
 ├── manage.py               # Django Management Script
 ├── requirements.txt        # Python Dependencies
-└── README.md               # Project Documentation
+└── README.md               # Documentation
 ```
 
 ---
@@ -118,4 +123,8 @@ Visit `http://127.0.0.1:8000/` to see the application.
 
 Contributions are welcome! Please fork the repository and submit a Pull Request.
 
+---
 
+## 📄 License
+
+This project is open-source.
