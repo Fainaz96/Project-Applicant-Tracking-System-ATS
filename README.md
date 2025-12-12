@@ -6,7 +6,7 @@ An intelligent recruitment platform that leverages Google's Gemini AI to automat
 
 ## 🌟 Key Features
 
-*   **🤖 AI Resume Parsing**: Automatically extracts candidate details (Name, Email, Phone, Experience) from PDF and DOCX resumes using Gemini 1.5 Flash.
+*   **🤖 AI Resume Parsing**: Automatically extracts candidate details (Name, Email, Phone, Experience) from PDF and DOCX resumes using Gemini 2.5 Flash.
 *   **🎯 Context-Aware Ranking**: ranks candidates specifically against the **Job Description** they applied for, providing a relevance score (0-100%).
 *   **💼 Job Board & Career Page**: A public-facing career page where candidates can browse open positions and apply directly.
 *   **🧠 Skill Extraction**: Identifies technical and soft skills and saves them to the database.
