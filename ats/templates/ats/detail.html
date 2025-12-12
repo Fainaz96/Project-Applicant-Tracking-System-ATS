@@ -1,0 +1,49 @@
+{% extends 'ats/base.html' %}
+
+{% block title %}Candidate Details - ATS{% endblock %}
+
+{% block content %}
+<a href="{% url 'dashboard' %}">&larr; Back to Dashboard</a>
+
+<h1>{{ applicant.name|default:"Candidate Details" }}</h1>
+
+<div class="card">
+    <h2>🏆 Evaluation</h2>
+    <p><strong>Total Score:</strong> <span class="score">{{ applicant.evaluation.total_score }}/100</span></p>
+    <p><strong>Reasoning:</strong> {{ applicant.evaluation.reason }}</p>
+    <p><strong>Skill Score:</strong> {{ applicant.evaluation.skill_score }} | <strong>Experience Score:</strong> {{
+        applicant.evaluation.experience_score }}</p>
+</div>
+
+<div class="card">
+    <h2>👤 Contact Info</h2>
+    <p><strong>Email:</strong> {{ applicant.email }}</p>
+    <p><strong>Phone:</strong> {{ applicant.phone }}</p>
+</div>
+
+<div class="card">
+    <h2>🛠 Skills</h2>
+    {% for skill in applicant.skills.all %}
+    <span
+        style="background: #e9ecef; padding: 5px 10px; border-radius: 15px; margin-right: 5px; display: inline-block; margin-bottom: 5px;">
+        {{ skill.skill.name }} ({{ skill.confidence }})
+    </span>
+    {% empty %}
+    <p>No skills extracted.</p>
+    {% endfor %}
+</div>
+
+<div class="card">
+    <h2>📝 Parsed Experience</h2>
+    <p>{{ applicant.experience_summary }}</p>
+</div>
+
+<div class="card">
+    <h2>📄 Raw Data</h2>
+    <details>
+        <summary>View Parsed JSON</summary>
+        <pre>{{ applicant.parsed_data|pprint }}</pre>
+    </details>
+</div>
+
+{% endblock %}

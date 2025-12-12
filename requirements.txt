@@ -1,0 +1,9 @@
+Django
+djangorestframework
+google-generativeai
+chromadb
+python-dotenv
+psycopg2-binary
+pypdf
+docx2txt
+whitenoise

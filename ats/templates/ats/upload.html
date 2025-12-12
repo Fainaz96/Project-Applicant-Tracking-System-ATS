@@ -1,0 +1,35 @@
+{% extends 'ats/base.html' %}
+
+{% block title %}Upload Resume - ATS{% endblock %}
+
+{% block content %}
+<div
+    style="background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); max-width: 600px; margin: 0 auto;">
+    <h2>
+        {% if job %}
+        Apply for {{ job.title }}
+        {% else %}
+        Upload Resume
+        {% endif %}
+    </h2>
+
+    {% if job %}
+    <div style="margin-bottom: 20px; padding: 10px; background: #f8f9fa; border-left: 4px solid #007bff;">
+        <strong>About the Role:</strong>
+        <p style="white-space: pre-wrap; margin-top: 5px;">{{ job.description }}</p>
+    </div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% if error %}
+        <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 5px; margin-bottom: 20px;">
+            <strong>Error:</strong> {{ error }}
+        </div>
+        {% endif %}
+        <div style="margin-bottom: 20px;">
+            {{ form.as_p }}
+        </div>
+        <button type="submit" class="btn">Upload & Process</button>
+    </form>
+    {% endblock %}

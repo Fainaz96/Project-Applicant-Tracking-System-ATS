@@ -1,0 +1,44 @@
+{% extends 'ats/base.html' %}
+
+{% block title %}Dashboard - ATS{% endblock %}
+
+{% block content %}
+<h1>Candidate Dashboard</h1>
+<p>Ranked candidates based on AI scoring.</p>
+
+<a href="{% url 'upload_resume' %}" class="btn" style="float: right; margin-bottom: 20px;">+ Upload New</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Total Score</th>
+            <th>Skills</th>
+            <th>Experience</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for applicant in applicants %}
+        <tr>
+            <td>#{{ forloop.counter }}</td>
+            <td>
+                <strong>{{ applicant.name|default:"Unknown" }}</strong><br>
+                <small>{{ applicant.email|default:"No Email" }}</small>
+            </td>
+            <td class="score">{{ applicant.evaluation.total_score }}</td>
+            <td>{{ applicant.evaluation.skill_score }}</td>
+            <td>{{ applicant.evaluation.experience_score }}</td>
+            <td>
+                <a href="{% url 'applicant_detail' applicant.pk %}" class="btn" style="padding: 5px 10px; font-size: 0.9em;">View</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6" style="text-align: center;">No applicants yet. Upload a resume to get started.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
