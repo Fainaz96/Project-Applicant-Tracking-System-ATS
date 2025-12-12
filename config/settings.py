@@ -91,6 +91,18 @@ DATABASES = {
     }
 }
 
+if 'VERCEL' in os.environ:
+    import shutil
+    db_file = BASE_DIR / 'db.sqlite3'
+    tmp_db = Path('/tmp/db.sqlite3')
+    # Copy db to tmp if it doesn't exist (to allow writing)
+    if db_file.exists() and not tmp_db.exists():
+        shutil.copyfile(str(db_file), str(tmp_db))
+        # Ensure permissions
+        os.chmod(str(tmp_db), 0o666)
+    
+    DATABASES['default']['NAME'] = tmp_db
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
