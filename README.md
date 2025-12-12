@@ -15,6 +15,18 @@ An intelligent recruitment platform that leverages Google's Gemini AI to automat
 
 ---
 
+# 🌟 Project Architecture
+#![ATS Architecture (Gemini A2A) - Color Enhanced (2)](https://github.com/user-attachments/assets/ca3193e8-3a18-4e39-9f0a-8561f809dc22)
+
+---
+
+# 🌟 APP Guide
+<img width="1920" height="967" alt="project-applicant-tracking-system-ats_3" src="https://github.com/user-attachments/assets/60d10116-3768-4b4e-879a-5849eb5ec968" />
+<img width="1917" height="958" alt="project-applicant-tracking-system-ats_2" src="https://github.com/user-attachments/assets/415abeac-204c-4815-90bc-a1c406eb54d2" />
+<img width="1917" height="962" alt="project-applicant-tracking-system-ats_1" src="https://github.com/user-attachments/assets/7385ce81-77a5-4707-ba47-f69ac62e1a62" />
+
+---
+
 ## 🛠️ Tech Stack
 
 *   **Backend**: Django 5.0 (Python)
@@ -88,6 +100,7 @@ Visit `http://127.0.0.1:8000/` to see the application.
 ## ☁️ Deployment Guide (Vercel)
 
 This project is configured for easy deployment on **Vercel**.
+<img width="1362" height="605" alt="project-applicant-tracking-system-ats_4" src="https://github.com/user-attachments/assets/e2fb6b52-1c7a-4007-ab26-ba2dd1f39119" />
 
 1.  **Fork** this repository.
 2.  Login to [Vercel](https://vercel.com/) and click **"Add New Project"**.
