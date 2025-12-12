@@ -118,8 +118,4 @@ Visit `http://127.0.0.1:8000/` to see the application.
 
 Contributions are welcome! Please fork the repository and submit a Pull Request.
 
----
 
-## 📄 License
-
-This project is open-source and available under the [MIT License](LICENSE).
